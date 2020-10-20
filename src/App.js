@@ -240,8 +240,16 @@ function App() {
     setAlert({ type: 'success', message: 'Saved Successfully', show: true });
   };
 
-  const onKeyDown = e => {
-    if (currentBook.isLeaf && (window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)  && e.keyCode == 83) {
+  const publishToMedium = () => {
+    console.log('publishing to medium');
+  };
+
+  const onKeyDown = (e) => {
+    if (
+      currentBook.isLeaf &&
+      (window.navigator.platform.match('Mac') ? e.metaKey : e.ctrlKey) &&
+      e.keyCode == 83
+    ) {
       e.preventDefault();
       saveFileContent();
     }
@@ -305,7 +313,7 @@ function App() {
   // Main App Structure
 
   return (
-    <div className='app__container' onKeyDown={onKeyDown} tabIndex="0">
+    <div className='app__container' onKeyDown={onKeyDown} tabIndex='0'>
       <Drawer
         width={500}
         placement='right'
@@ -382,7 +390,7 @@ function App() {
               onSelect={onSelect}
               onExpand={onExpand}
               treeData={treeData}
-              style={{backgroundColor: '#F6F9FC'}}
+              style={{ backgroundColor: '#F6F9FC' }}
             />
           </div>
         </Sider>
@@ -434,6 +442,20 @@ function App() {
                 onClick={saveFileContent}
               >
                 Save File
+              </Button>
+            ) : (
+              ''
+            )}
+          </div>
+          <div>
+            {currentBook.isLeaf ? (
+              <Button
+                type='primary'
+                style={{ marginTop: '10px', width: '90%' }}
+                icon={<SaveOutlined />}
+                onClick={publishToMedium}
+              >
+                Publish
               </Button>
             ) : (
               ''

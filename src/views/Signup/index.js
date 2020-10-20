@@ -34,7 +34,7 @@ class Signup extends React.Component {
     return (
       <div className='signin__btn'>
         {this.state.currentUser ? (
-          <Redirect to="/" />
+          <Redirect to='/' />
         ) : (
           <Button size='middle' onClick={signInWithGoogle} icon={<GoogleOutlined />}>
             Sign In
